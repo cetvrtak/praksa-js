@@ -1,7 +1,24 @@
 "use strict";
 
-const greet = (greeting) => (name) => console.log(`${greeting} ${name}`);
-greet("Привет")("детка");
+//////////////////////////////////////////
+// The Bind Method
+//////////////////////////////////////////
+
+// Partial Application
+const addTax = (rate, value) => value + value * rate;
+const addVAT = addTax.bind(null, 0.23);
+
+// Using function factory
+const taxCalculator = function (rate) {
+  return function (amount) {
+    return amount * (1 + rate);
+  };
+};
+const taxCalc17 = taxCalculator(0.17);
+console.log(taxCalc17(100));
+
+// const greet = (greeting) => (name) => console.log(`${greeting} ${name}`);
+// greet("Привет")("детка");
 
 // const bookings = [];
 
