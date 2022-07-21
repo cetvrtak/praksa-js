@@ -79,7 +79,7 @@ function displayMovements(movements) {
 displayMovements(account1.movements);
 
 ///////////////////////////////////////
-Computing usernames
+// Computing usernames
 ///////////////////////////////////////
 
 function createUsernames(accounts) {
@@ -92,6 +92,12 @@ function createUsernames(accounts) {
   });
 }
 createUsernames(accounts);
+
+function calcDisplayBalance(movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+}
+calcDisplayBalance(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
