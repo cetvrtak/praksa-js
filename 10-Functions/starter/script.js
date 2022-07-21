@@ -1,21 +1,37 @@
 "use strict";
 
+////////////////////////////////////
+// Closures
+////////////////////////////////////
+// let f;
+
+// const g = function () {
+//   const a = 23;
+//   f = function () {
+//     console.log("Hi, Stevo");
+//   };
+// };
+
+// g();
+// f();
+// console.dir(f);
+
 //////////////////////////////////////////
 // The Bind Method
 //////////////////////////////////////////
 
 // Partial Application
-const addTax = (rate, value) => value + value * rate;
-const addVAT = addTax.bind(null, 0.23);
+// const addTax = (rate, value) => value + value * rate;
+// const addVAT = addTax.bind(null, 0.23);
 
-// Using function factory
-const taxCalculator = function (rate) {
-  return function (amount) {
-    return amount * (1 + rate);
-  };
-};
-const taxCalc17 = taxCalculator(0.17);
-console.log(taxCalc17(100));
+// // Using function factory
+// const taxCalculator = function (rate) {
+//   return function (amount) {
+//     return amount * (1 + rate);
+//   };
+// };
+// const taxCalc17 = taxCalculator(0.17);
+// console.log(taxCalc17(100));
 
 // const greet = (greeting) => (name) => console.log(`${greeting} ${name}`);
 // greet("Привет")("детка");
