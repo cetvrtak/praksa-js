@@ -114,7 +114,7 @@ function calcDisplaySummary(movements) {
     .filter((mov) => mov > 0)
     .map((deposit) => deposit * 0.012)
     .filter((int, i, arr) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int);
@@ -123,8 +123,8 @@ function calcDisplaySummary(movements) {
 calcDisplaySummary(account1.movements);
 
 /////////////////////////////////////////////////
-/////////////////////////////////////////////////
 // LECTURES
+/////////////////////////////////////////////////
 
 const currencies = new Map([
   ["USD", "United States dollar"],
@@ -164,15 +164,27 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 ///////////////////////////////////////////////
 // The Magic of Chaining Methods
 ///////////////////////////////////////////////
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
-// PIPELINE
-const totalDepositsUSD = movements
-  .filter((mov) => mov > 0)
-  .map((mov, i, arr) => {
-    // console.log(arr);
-    return mov * eurToUsd;
-  })
-  .reduce((acc, mov) => acc + mov, 0)
-  .toFixed(2);
-console.log(totalDepositsUSD);
+// // PIPELINE
+// const totalDepositsUSD = movements
+//   .filter((mov) => mov > 0)
+//   .map((mov, i, arr) => {
+//     // console.log(arr);
+//     return mov * eurToUsd;
+//   })
+//   .reduce((acc, mov) => acc + mov, 0)
+//   .toFixed(2);
+// console.log(totalDepositsUSD);
+
+/////////////////////////////////////////////
+//  The find method
+/////////////////////////////////////////////
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find((acc) => acc.owner == "Jessica Davis");
+console.log(account);
