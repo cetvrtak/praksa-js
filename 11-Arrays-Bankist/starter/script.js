@@ -61,10 +61,12 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-function displayMovements(movements) {
+function displayMovements(movements, sort = false) {
   containerMovements.innerHTML = "";
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `
     <div class="movements__row">
@@ -203,6 +205,13 @@ btnLoan.addEventListener("click", function (e) {
   }
 });
 
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
 /////////////////////////////////////////////////
 // LECTURES
 /////////////////////////////////////////////////
@@ -308,3 +317,56 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //   .flatMap((acc) => acc.movements)
 //   .reduce((acc, mov) => acc + mov, 0);
 // console.log(overallBalance);
+
+////////////////////////////////
+// Sorting Arrays
+////////////////////////////////
+
+// Strings
+// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners.sort());
+// console.log(owners);
+
+// // Numbers
+// console.log(movements);
+// // console.log(movements.sort()); -> Sorts alphabetically
+// movements.sort((a, b) => a - b);
+// console.log(movements);
+
+//////////////////////////////////////////////
+// More Ways of Creating and Filling Arrays
+//////////////////////////////////////////////
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// const x = new Array(7);
+// console.log(x);
+
+// // x.fill(1);
+// x.fill(1, 3, 5);
+// console.log(x);
+
+// arr.fill(23, 2, 6);
+// console.log(arr);
+
+// // Array.from
+// const why = Array.from({ length: 7 }, () => 1);
+// console.log(why);
+
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
+
+// const randomNumbers = Array.from({ length: 100 }, () =>
+//   Math.trunc(Math.random() * 100)
+// );
+// console.log(randomNumbers);
+
+console.log(document.querySelectorAll(".movements__value"));
+const movementsUI = Array.from(
+  document.querySelectorAll(".movements__value"),
+  (el) => Number(el.textContent.replace("€", ""))
+);
+console.log(movementsUI);
+
+const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+console.log(movementsUI2);
