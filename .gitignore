@@ -1,6 +1,4 @@
 # Specify filepatterns you want git to ignore.
 
 complete-javascript-course/
-tasks/sneakers
-tasks/git_test
-tasks/gallery
+tasks
