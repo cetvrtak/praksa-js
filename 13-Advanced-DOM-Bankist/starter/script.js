@@ -36,25 +36,21 @@ document.addEventListener("keydown", function (e) {
 // SELECTING, CREATING AND DELETING ELEMENTS
 //////////////////////////////////////////////////////////////////
 
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
-
 const header = document.querySelector(".header");
-const allSections = document.querySelectorAll(".section");
-console.log(allSections);
+// const allSections = document.querySelectorAll(".section");
+// console.log(allSections);
 
-document.getElementById("section--1");
-const allButtons = document.getElementsByTagName("button");
-console.log(allButtons);
+// document.getElementById("section--1");
+// const allButtons = document.getElementsByTagName("button");
+// console.log(allButtons);
 
-console.log(document.getElementsByClassName("btn"));
+// console.log(document.getElementsByClassName("btn"));
 
 // Creating and inserting elements
 // .insertAdjacentHTML
 
 const message = document.createElement("div");
-message.textContent = "This is a neat message about cookies";
+// message.textContent = "This is a neat message about cookies";
 message.classList.add("cookie-message");
 message.innerHTML =
   "We use cookies to improve functionality and analytics on our web site. <button class='btn btn--close-cookie'>Got it!</button>";
@@ -72,3 +68,52 @@ document
     // message.remove();
     message.parentElement.removeChild(message);
   });
+
+////////////////////////////////////////////////
+// Styles, Attributes and Classes
+////////////////////////////////////////////////
+
+message.style.backgroundColor = "#37383d";
+message.style.width = "120%";
+
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
+
+document.documentElement.style.setProperty("--color-primary", "red");
+
+// Attributes
+const logo = document.querySelector(".nav__logo");
+console.log(logo.alt);
+console.log(logo.className);
+
+logo.alt = "B-e-a-utiful logo";
+
+// Non-standard
+// console.log(logo.designer); -> undefined
+console.log(logo.getAttribute("designer"));
+logo.setAttribute("company", "Infomedia");
+
+console.log(logo.src);
+console.log(logo.getAttribute("src"));
+
+const link = document.querySelector(".nav__link--btn");
+console.log(link.href);
+console.log(link.getAttribute("href"));
+
+// Data Attributes
+console.log(logo.dataset.versionNumber);
+
+// Classes
+logo.classList.add("c");
+logo.classList.remove("c");
+logo.classList.toggle("c");
+logo.classList.contains("c");
+
+// logo.className = "jonas";
+// console.log(logo);
