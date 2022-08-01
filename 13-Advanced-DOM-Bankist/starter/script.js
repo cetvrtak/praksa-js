@@ -154,17 +154,41 @@ btnScrollTo.addEventListener("click", function (e) {
 /////////////////////////////////////////////
 // Types of Events and Event Handlers
 /////////////////////////////////////////////
-const h1 = document.querySelector("h1");
-const theAlert = function (e) {
-  console.log("addEventListener");
-};
+// const h1 = document.querySelector("h1");
+// const theAlert = function (e) {
+//   console.log("addEventListener");
+// };
 
-h1.addEventListener("mouseenter", theAlert);
-setTimeout(() => {
-  h1.removeEventListener("mouseenter", theAlert);
-}, 3000);
+// h1.addEventListener("mouseenter", theAlert);
+// setTimeout(() => {
+//   h1.removeEventListener("mouseenter", theAlert);
+// }, 3000);
 
 // Old school
 // h1.onmouseenter = function (e) {
 //   console.log("Mouse entered");
 // };
+
+////////////////////////////////////////////
+// Page navigation
+////////////////////////////////////////////
+// document.querySelectorAll(".nav__link").forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute("href");
+//     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+//   });
+// });
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  //  Matching strategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
+});
