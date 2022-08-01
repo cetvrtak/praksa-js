@@ -76,44 +76,77 @@ document
 message.style.backgroundColor = "#37383d";
 message.style.width = "120%";
 
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
+// console.log(message.style.color);
+// console.log(message.style.backgroundColor);
 
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// console.log(getComputedStyle(message).color);
+// console.log(getComputedStyle(message).height);
 
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
 
-document.documentElement.style.setProperty("--color-primary", "red");
+// document.documentElement.style.setProperty("--color-primary", "red");
 
 // Attributes
-const logo = document.querySelector(".nav__logo");
-console.log(logo.alt);
-console.log(logo.className);
+// const logo = document.querySelector(".nav__logo");
+// console.log(logo.alt);
+// console.log(logo.className);
 
-logo.alt = "B-e-a-utiful logo";
+// logo.alt = "B-e-a-utiful logo";
 
-// Non-standard
-// console.log(logo.designer); -> undefined
-console.log(logo.getAttribute("designer"));
-logo.setAttribute("company", "Infomedia");
+// // Non-standard
+// // console.log(logo.designer); -> undefined
+// console.log(logo.getAttribute("designer"));
+// logo.setAttribute("company", "Infomedia");
 
-console.log(logo.src);
-console.log(logo.getAttribute("src"));
+// console.log(logo.src);
+// console.log(logo.getAttribute("src"));
 
-const link = document.querySelector(".nav__link--btn");
-console.log(link.href);
-console.log(link.getAttribute("href"));
+// const link = document.querySelector(".nav__link--btn");
+// console.log(link.href);
+// console.log(link.getAttribute("href"));
 
 // Data Attributes
-console.log(logo.dataset.versionNumber);
+// console.log(logo.dataset.versionNumber);
 
-// Classes
-logo.classList.add("c");
-logo.classList.remove("c");
-logo.classList.toggle("c");
-logo.classList.contains("c");
+// // Classes
+// logo.classList.add("c");
+// logo.classList.remove("c");
+// logo.classList.toggle("c");
+// logo.classList.contains("c");
 
 // logo.className = "jonas";
 // console.log(logo);
+
+///////////////////////////////////////////////
+// Smooth scrolling
+///////////////////////////////////////////////
+
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  // console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+  // console.log("Current scroll (X/Y)", window.pageXOffset, window.pageYOffset);
+  // console.log(
+  //   "Viewport",
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+
+  // window.scrollTo(
+  //   s1coords.left + window.scrollX,
+  //   s1coords.top + window.scrollY
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.scrollX,
+  //   top: s1coords.top + window.scrollY,
+  //   behavior: "smooth",
+  // });
+
+  section1.scrollIntoView({ behavior: "smooth" });
+});
