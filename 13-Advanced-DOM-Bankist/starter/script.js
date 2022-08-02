@@ -268,3 +268,47 @@ function handleHover(e) {
 
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
+
+////////////////////////////////////////////
+// Sticky navigation
+////////////////////////////////////////////
+// const obsCallBack = function () {};
+// const observerOptions = {
+//   root: null,
+//   threshold: 0.1,
+// };
+// const observer = new IntersectionObserver(obsCallBack, observerOptions);
+// observer.observe(section1);
+const navHeight = nav.getBoundingClientRect().height;
+
+function stickyNav(entries) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
+}
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `${navHeight}px`,
+});
+headerObserver.observe(header);
+
+////////////////////////////////////////////
+// Revealing Elements on Scroll
+////////////////////////////////////////////
+const allSections = document.querySelectorAll(".section");
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+};
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
