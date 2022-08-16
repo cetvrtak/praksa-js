@@ -2,3 +2,7 @@
 
 complete-javascript-course/
 tasks
+node_modules
+*.json
+.parcel-cache
+dist
